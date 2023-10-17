@@ -1,0 +1,84 @@
+1.
+1-1 00100000
+1-2 10011101
+1-3 10110011
+1-4 11101110
+1-5 배타적 논리합연산은 결합 법칙이 성립한다.
+
+
+2. 
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(int argc, char* argv[]){
+     int c;
+
+    while((c=getchar())!=EOF){
+         c = c ^ atoi(argv[1]);
+         putchar(c);
+    }
+
+    return 0;
+}
+
+3.
+
+unsigned long long pack_employee_data(unsigned id_no, unsigned job_type, unsigned salary, unsigned family) { // 코드 작성
+    unsigned long long employee = 0;
+
+    employee |= (unsigned long long) id_no;
+    employee |= ((unsigned long long) job_type << 20);
+    employee |= ((unsigned long long) salary << 30);
+    employee |= ((unsigned long long) family << 60); 
+
+    return employee;
+}
+
+void print_employee_data(unsigned long long employee) { // 코드 작성
+    unsigned id_no = (employee & 0xFFFFF);
+    unsigned job_type = ((employee >> 20)) & 0x3FF;
+    unsigned salary = ((employee >> 30)) & 0x3FFFFFFF;
+    unsigned family = ((employee >> 60)) & 0xF;
+
+    printf("id : %d\n", id_no);
+    printf("job_type : %d\n", job_type);
+    printf("salary : %d\n", salary);
+    printf("family : %d\n", family);
+    
+    return;
+}
+
+
+4.
+
+#include<stdio.h>
+
+typedef struct {
+    char name[10];
+    unsigned int id : 17, age : 7, salary : 27;
+} employee;
+
+
+int main(void)
+{
+    employee employees[7] = 
+        {
+            {"name", 10330, 21, 24000000},
+            {"eric", 10333, 23, 28000000},
+            {"jane", 40234, 26, 40000000},
+            {"mary", 30022, 46, 65000000},
+            {"kim", 90032, 25, 38000000},
+            {"lee", 90038, 24, 30000000},
+            {"Test_name", 99999, 65, 100000000}
+        };
+
+        for(int i=0; i<7; i++){
+            printf("name : %-10s, ID : %-10d, age : %-5d, salary : %-10d\n", employees[i].name, employees[i].id, employees[i].age, employees[i].salary);
+ 
+       }
+
+       return 0;
+}
+
+
+

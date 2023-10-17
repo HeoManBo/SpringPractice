@@ -1,0 +1,9 @@
+호스트 이름 : 3.35.110.195
+고급 -> 인증 -> 개인키 파일 
+
+ubuntu 비밀번호 X 
+
+jar 확인하고 빌드 
+
+
+nohup java -jar NovelForm-0.0.1-SNAPSHOT.jar &
